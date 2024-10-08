@@ -1,0 +1,59 @@
+esercizio 1 - Lavorare con le classi astratte pt. 1
+
+
+Crea un file chiamato class.php e crea una classe astratta Categoria , con i relativi figli (ovvero che estendono Category) seguendo questa struttura:
+Category
+-- Attualita'
+-- Sport
+-- Gossip
+-- Storia
+Tutte le classi dovranno implementare il metodo astratto chiamato: getMyCategory() che mostri a schermo il valore relativo.
+
+
+esercizio 2 - Lavorare con le classi astratte pt. 2
+Crea un nuovo file chiamato index.php e, importando la classe appena creata, crea una classe Post con i seguenti attributi
+Titolo
+Categoria
+Tag
+Crea delle istanze di classe Post, iniettando la dipendenze Categoria all’interno dell’attributo dedicato. Crea anche dei metodi per visualizzare gli articoli completi.
+hint: utilizzare la funzione di php require_once(); per richiamare il file  in index.php
+
+
+
+esercizio 3
+Replicare l'esempio del panino visto a lezione: potete personalizzarlo come preferite (anche cambiando l'esempio del panino in sé l'importante è capire i meccanismi e la sintassi)
+
+p.s. se fate copia e incolla me ne accorgo
+
+
+
+esercizio 4
+Crea un trait chiamato “Calculator“ definendo le seguenti operazioni tra numeri:
+public function sum($a, $b) {
+  return $a + $b;
+}
+public function sub($a, $b) {
+  return $a - $b;
+}
+public function mul($a, $b) {
+  return $a * $b;
+}
+public function div($a, $b) {
+  return $a / $b;
+}
+public function sqr($a){
+  return sqrt($a);
+}
+Crea una classe Rettangolo con due attributi
+Base (b);
+Altezza (h);
+Crea tre metodi che vanno a calcolare:
+Area → b * h;
+Perimetro → 2 * b + 2 * h;
+Diagonale → √ hˆ2 + bˆ2 (Tutto sotto radice)
+Per fare questi calcoli dovete sfruttare le funzioni del Trait Calculator
+ extra: provate a creare classi per altre figure geometriche e calcolare area e perimetro anche lì sempre sfruttando il trait
+
+
+
+PUSHARE TUTTO SU GITHUB!
