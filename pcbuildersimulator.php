@@ -7,7 +7,6 @@ class IntelCpu extends Cpu{
     public function cpuType(){
         echo "-Processore Intel. ;) $$$ \n";
     }
-
 }
 
 class AmdCpu extends Cpu{
@@ -32,14 +31,12 @@ class PowerPc extends Cpu{
 
 abstract class Gpu {
     abstract public function gpuType();
-
 }
 
 class Nvidia extends Gpu{
     public function gpuType(){
         echo "-Scheda video Nvidia. Tua Nvidia mia la Frza. \n";
     }
-
 }
 
 class AmdGpu extends Gpu{
@@ -64,14 +61,12 @@ class IntelGpu extends Gpu{
 
 abstract class Memory {
     abstract public function memoryType();
-
 }
 
 class HDD extends Memory{
     public function memoryType(){
         echo "-Unità di memoria HDD. Hard drive, not drive hard. \n";
     }
-
 }
 
 class SSD extends Memory{
@@ -102,9 +97,28 @@ class Computer{
         $this->gpu=$schedavideo;
         $this->memory=$memoria;
     }
+
+    public function getCpu(){
+        $this->cpu->cpuType();
+    }
+
+    public function getGpu(){
+        $this->gpu->gpuType();
+    }
+    public function getMemory(){
+        $this->memory->memoryType();
+    }
+    public function showComponents() {
+        echo "Componenti del computer:\n";
+        $this->getCpu();
+        $this->getGpu();
+        $this->getMemory();
+    }
+
 }
 
 $IMeanTheBudget= new Computer(new IntelCpu(),new IntelGpu(),new SSD());
-print_r($IMeanTheBudget);
+// var_dump($IMeanTheBudget);
+$IMeanTheBudget->showComponents();
 
 ?>
