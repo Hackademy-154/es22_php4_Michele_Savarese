@@ -1,55 +1,93 @@
+esercizio 2 - Lavorare con le classi astratte pt. 2
+Crea un nuovo file chiamato index.php e, importando la classe appena creata, crea una classe Post con i seguenti attributi
+Titolo
+Categoria
+Tag
+Crea delle istanze di classe Post, iniettando la dipendenze Categoria all’interno dell’attributo dedicato. Crea anche dei metodi per visualizzare gli articoli completi.
+hint: utilizzare la funzione di php require_once(); per richiamare il file  in index.php
+
+
 <?php
 
-class User{
+class Post{
+    public $titolo;
+    public $categoria;
+    public $tag;
 
-    // attributi, costruttore e metodi
+    public function __construct($titolo, Category $categoria, $tag) {
+        $this->titolo = $titolo;
+        $this->categoria = $categoria;
+        $this->tag = $tag;
+    }
 
-    public $username;
-    public $email;
+    public function showTitle() {
+        return $this->titolo;
+    }
 
-    //costruttore
-    public function __construct($username, $email)
+    public function showCategory() {
+        return $this->categoria->getMyCategory();
+    }
+
+    public function showTag() {
+        return $this->tag;
+    }
+
+    public function showPost() {
+        echo "Titolo: " . $this->showTitle() . "\n";
+        echo $this->showCategory();
+        echo "Tag: " . $this->showTag() . "\n";
+    }
+
+
+
+}
+
+abstract class Category
+{
+    abstract public function getMyCategory();
+}
+
+class Actuality extends Category{
+
+    public function getMyCategory()
     {
-$this->username = $username;
-$this->email = $email;
+        echo "Categria: attualità; \n";
+    }
+
 }
 
-    public function createEmail(){
+class Sport extends Category{
 
-        $this->email = $this->username . "sito.com";
+    public function getMyCategory()
+    {
+        echo "Categria: sport; \n";
+    }
+
+}
+
+class Gossip extends Category{
+
+    public function getMyCategory()
+    {
+        echo "Categria: gossip; \n";
     }
 }
 
-$utente1 = new User('MatteoL', 'matteo@email.it');
+class History extends Category{
 
-$utente2 = new User('MatteoS', 'matteo.s@email.it');
-print_r($utente1);
-print_r($utente2);
-
-class StudentUser extends User
-{
-public $hackademy;
-public function __construct($username, $email, $hackademy)
-{
-    parent::__construct($username, $email);
-    $this->hackademy = $hackademy;
-}
-
-}
-
-$utente3 = new StudentUser('MicL', 'maaatteo@email.it', 154);
-print_r($utente3);
-
-
-//! classe astratta, un modello di partenza per creare altre classi: PROGETTARE
-// abstract public function info(); //implementa un metodo per dire alle classi figlie con abstract cosa fare.
-
-
-//! trait
-// permette di utilizzare della logica in classi diverse che sono tra loro indipendenti, quindi non sono legate da ereditarietà+
-//usa nomenclatura delle classi
-trait JetPack{
-    public function fly(){
-        echo "ciao mamma sto volando";
+    public function getMyCategory()
+    {
+        echo "- Categria: storia; \n";
     }
 }
+$articoloActuality = new Actuality();
+$articoloSport = new Sport();
+$articoloGossip = new Gossip();
+$articoloHistory = new History();
+
+
+$articolo1 = new Post("Napoleon III in tresca con Garibaldi", $articoloGossip, "inciuciamenti");
+$articolo1->showPost();
+
+
+?>
